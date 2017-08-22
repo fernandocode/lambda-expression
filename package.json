@@ -1,0 +1,28 @@
+{
+  "name": "lambda-expression",
+  "version": "0.0.1",
+  "description": "Utility to analyze function (js) and arrow functions (ts), and create metadata of expressions, the initial scope is that it seeks to solve simple expressions. And later advance to encompass complex expressions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "linq",
+    "linq-expression",
+    "lambda",
+    "lambda-expression",
+    "expression",
+    "arrow-function",
+    "function"
+  ],
+  "author": "Fernando Leal",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fernandocode/lambda-expression.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fernandocode/lambda-expression/issues"
+  },
+  "homepage": "https://github.com/fernandocode/lambda-expression#readme"
+}
