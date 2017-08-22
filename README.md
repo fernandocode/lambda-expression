@@ -12,8 +12,6 @@ First, install the package using npm:
 
 In Typescript:
 
-imports:
-
     import { ExpressionUtils, Expression } from "lambda-expression";
 
     export class ExpressionUsage {
