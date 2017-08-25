@@ -1,12 +1,9 @@
 {
   "name": "lambda-expression",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Utility to analyze function (js) and arrow functions (ts), and create metadata of expressions, the initial scope is that it seeks to solve simple expressions. And later advance to encompass complex expressions.",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "index.js",
   "scripts": {
-    "run": "ts-node ./src/index.ts",
-    "prepublishOnly": "tsc -p ./ --outDir dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
