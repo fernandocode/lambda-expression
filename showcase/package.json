@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "start": "webpack-dev-server",
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "Fernando Leal",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.3.0",
+    "ts-loader": "^2.3.7",
+    "typescript": "^2.5.3",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.0"
+  },
+  "dependencies": {
+    "lambda-expression": "0.0.5"
+  }
+}

@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var index_1 = require("./index");
+var main_1 = require("../../src/main");
 var ExpressionUsage = (function () {
     function ExpressionUsage() {
-        this._expressionUtils = new index_1.ExpressionUtils();
+        this._expressionUtils = new main_1.ExpressionUtils();
     }
     ExpressionUsage.prototype.expression = function (exp) {
         console.log(this._expressionUtils.getColumnByExpression(exp));
@@ -28,3 +28,4 @@ var ReferencesModelTest = (function () {
     }
     return ReferencesModelTest;
 }());
+new ExpressionUsage().test();

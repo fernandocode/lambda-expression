@@ -1,0 +1,8 @@
+!lib
+node_modules
+.vscode
+*.log
+*.ts
+*.ignorenpm
+tsconfig.json
+showcase

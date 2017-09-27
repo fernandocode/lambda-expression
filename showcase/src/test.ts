@@ -1,4 +1,4 @@
-import { ExpressionUtils, Expression } from './index';
+import { ExpressionUtils, Expression } from "../../src/main";
 
 export class ExpressionUsage {
 
@@ -34,3 +34,5 @@ class ReferencesModelTest{
     id: number;
     name: string;
 }
+
+new ExpressionUsage().test();

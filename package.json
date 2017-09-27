@@ -2,7 +2,8 @@
   "name": "lambda-expression",
   "version": "0.0.5",
   "description": "Utility to analyze function (js) and arrow functions (ts), and create metadata of expressions, the initial scope is that it seeks to solve simple expressions. And later advance to encompass complex expressions.",
-  "main": "index.js",
+  "main": "./src/main.js",
+  "types": "./src/main.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,5 +25,6 @@
   "bugs": {
     "url": "https://github.com/fernandocode/lambda-expression/issues"
   },
-  "homepage": "https://github.com/fernandocode/lambda-expression#readme"
+  "homepage": "https://github.com/fernandocode/lambda-expression#readme",
+  "devDependencies": {}
 }

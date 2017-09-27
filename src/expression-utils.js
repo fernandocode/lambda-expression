@@ -1,7 +1,4 @@
 "use strict";
-// export * from './expression-utils';
-// export * from './metadatas';
-// export * from './types';
 Object.defineProperty(exports, "__esModule", { value: true });
 var ExpressionUtils = (function () {
     function ExpressionUtils(_defaultColumnSeparator) {
@@ -26,6 +23,7 @@ var ExpressionUtils = (function () {
         return void 0;
     };
     ExpressionUtils.prototype.getColumnByExpression = function (expression) {
+        console.log("novo");
         return this.getColumnByProperties(this.getPropertiesByExpression(expression));
     };
     ExpressionUtils.prototype.getColumnByProperties = function (properties) {
