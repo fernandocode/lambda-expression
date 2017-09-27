@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/lambda-expression.svg)](https://badge.fury.io/js/lambda-expression)
+
 # lambda-expression
 
 Utility to analyze function (js) and arrow functions (ts), and create metadata of expressions, the initial scope is that it seeks to solve simple expressions. And later advance to encompass complex expressions.
