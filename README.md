@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/lambda-expression.svg)](https://www.npmjs.com/package/lambda-expression)
+[![npm version](https://badge.fury.io/js/lambda-expression.svg/?a=1)](https://www.npmjs.com/package/lambda-expression)
 
 # lambda-expression
 
