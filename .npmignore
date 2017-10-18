@@ -2,7 +2,12 @@
 node_modules
 .vscode
 *.log
-*.ts
 *.ignorenpm
 tsconfig.json
 showcase
+
+# ignore the .ts files
+*.ts
+
+# include the .d.ts files
+!*.d.ts
