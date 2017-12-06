@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ExpressionUtils = (function () {
-    function ExpressionUtils(_defaultColumnSeparator) {
-        if (_defaultColumnSeparator === void 0) { _defaultColumnSeparator = "_"; }
-        this._defaultColumnSeparator = _defaultColumnSeparator;
+    function ExpressionUtils(_defaultSeparator) {
+        if (_defaultSeparator === void 0) { _defaultSeparator = "_"; }
+        this._defaultSeparator = _defaultSeparator;
     }
     ExpressionUtils.prototype.getValueByExpression = function (instance, expression) {
         return expression(instance);
@@ -22,11 +22,13 @@ var ExpressionUtils = (function () {
         }
         return void 0;
     };
-    ExpressionUtils.prototype.getColumnByExpression = function (expression) {
-        return this.getColumnByProperties(this.getPropertiesByExpression(expression));
+    ExpressionUtils.prototype.getColumnByExpression = function (expression, separator) {
+        if (separator === void 0) { separator = this._defaultSeparator; }
+        return this.getColumnByProperties(this.getPropertiesByExpression(expression), separator);
     };
-    ExpressionUtils.prototype.getColumnByProperties = function (properties) {
-        return properties.join(this._defaultColumnSeparator);
+    ExpressionUtils.prototype.getColumnByProperties = function (properties, separator) {
+        if (separator === void 0) { separator = this._defaultSeparator; }
+        return properties.join(separator);
     };
     ExpressionUtils.prototype.getPropertiesByExpression = function (expression) {
         var strAfterReturn = expression.toString().split("return")[1].trim();
