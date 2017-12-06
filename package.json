@@ -1,6 +1,6 @@
 {
   "name": "lambda-expression",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Utility to analyze function (js) and arrow functions (ts), and create metadata of expressions, the initial scope is that it seeks to solve simple expressions. And later advance to encompass complex expressions.",
   "main": "./src/main.js",
   "types": "./src/main.d.ts",
