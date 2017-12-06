@@ -3,7 +3,7 @@ import { Expression, LambdaExpression } from "./types";
 
 export class ExpressionUtils {
 
-    constructor(private _defaultColumnSeparator: string = "_") {
+    constructor(private _defaultSeparator: string = "_") {
 
     }
 
@@ -26,12 +26,12 @@ export class ExpressionUtils {
         return void 0;
     }
 
-    public getColumnByExpression<T>(expression: Expression<T>): string {
-        return this.getColumnByProperties(this.getPropertiesByExpression(expression));
+    public getColumnByExpression<T>(expression: Expression<T>, separator: string = this._defaultSeparator): string {
+        return this.getColumnByProperties(this.getPropertiesByExpression(expression), separator);
     }
 
-    public getColumnByProperties(properties: string[]): string {
-        return properties.join(this._defaultColumnSeparator);
+    public getColumnByProperties(properties: string[], separator: string = this._defaultSeparator): string {
+        return properties.join(separator);
     }
 
     public getPropertiesByExpression<T>(expression: Expression<T>): string[] {

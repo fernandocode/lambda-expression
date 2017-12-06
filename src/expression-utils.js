@@ -23,7 +23,6 @@ var ExpressionUtils = (function () {
         return void 0;
     };
     ExpressionUtils.prototype.getColumnByExpression = function (expression) {
-        console.log("novo");
         return this.getColumnByProperties(this.getPropertiesByExpression(expression));
     };
     ExpressionUtils.prototype.getColumnByProperties = function (properties) {
