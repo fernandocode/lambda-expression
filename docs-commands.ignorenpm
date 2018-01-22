@@ -2,6 +2,8 @@
 > tsc
 
 ##TSLint:
+> tslint -c tslint.json --project "./" --fix
+
 # Run check:
 > tslint -c tslint.json 'src/**/*.ts'
 # Run check and fixed:

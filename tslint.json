@@ -23,5 +23,7 @@
             "never-prefix"
         ]
     },
-    "rulesDirectory": []
+    "linterOptions": {
+        "exclude": ["src/**/*.d.ts"]
+    }
 }

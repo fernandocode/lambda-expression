@@ -1,4 +1,5 @@
-import { ExpressionUtils, Expression } from "../../src/main";
+import { Expression, ExpressionUtils } from "../../src/main";
+import { ModelTest } from "./models/model-test";
 
 export class ExpressionUsage {
 
@@ -8,31 +9,18 @@ export class ExpressionUsage {
         this._expressionUtils = new ExpressionUtils();
     }
 
-    public expression<T>(exp: Expression<T>){
+    public expression<T>(exp: Expression<T>) {
+        // tslint:disable-next-line
         console.log(this._expressionUtils.getColumnByExpression(exp));
     }
 
-    public test(){
-        this.expression<ModelTest>(x => x.id); // id
-        this.expression<ModelTest>(x => x.description); // description
-        this.expression<ModelTest>(x => x.date); // date
-        this.expression<ModelTest>(x => x.isValid); // isValid
-        this.expression<ModelTest>(x => x.reference.name); // reference_name
+    public test() {
+        this.expression<ModelTest>((x) => x.id); // id
+        this.expression<ModelTest>((x) => x.description); // description
+        this.expression<ModelTest>((x) => x.date); // date
+        this.expression<ModelTest>((x) => x.isValid); // isValid
+        this.expression<ModelTest>((x) => x.reference.name); // reference_name
     }
-}
-
-class ModelTest{
-    id: number;
-    name: string;
-    description: string;
-    date: Date;
-    isValid: boolean;
-    reference: ReferencesModelTest;
-}
-
-class ReferencesModelTest{
-    id: number;
-    name: string;
 }
 
 new ExpressionUsage().test();

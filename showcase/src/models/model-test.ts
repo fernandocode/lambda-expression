@@ -1,5 +1,6 @@
 import { ReferencesModelTest } from "./reference-model-test";
-export declare class ModelTest {
+
+export class ModelTest {
     public id: number;
     public name: string;
     public description: string;
