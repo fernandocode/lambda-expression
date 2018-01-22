@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "webpack-dev-server",
+    "start-showcase": "npm run start",
     "dev": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,11 +13,8 @@
   "devDependencies": {
     "lite-server": "^2.3.0",
     "ts-loader": "^2.3.7",
-    "typescript": "^2.5.3",
+    "typescript": "2.6.2",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.0"
-  },
-  "dependencies": {
-    "lambda-expression": "0.0.5"
   }
 }

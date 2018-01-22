@@ -23,5 +23,5 @@ node_modules/
 Thumbs.db
 UserInterfaceState.xcuserstate
 
-*.js
-*.d.ts
+*.abc.js
+*.abc.d.ts

@@ -1,4 +1,4 @@
-import { LambdaColumnMetadata, LambdaPropertiesMetadata, LambdaExpressionMetadata } from './metadatas';
+import { LambdaColumnMetadata, LambdaExpressionMetadata, LambdaPropertiesMetadata } from "./metadatas";
 import { Expression, LambdaExpression } from "./types";
 
 export class ExpressionUtils {
@@ -13,7 +13,7 @@ export class ExpressionUtils {
 
     public getValueByProperties(instance: any, properties: string[]) {
         let result = instance;
-        properties.forEach(property => {
+        properties.forEach((property) => {
             result = this.getValue(result, property);
         });
         return result;
@@ -39,32 +39,33 @@ export class ExpressionUtils {
         if (!strAfterReturn) {
             strAfterReturn = expression.toString().split("{")[1].trim();
         }
-        let strBeforeSemicon = strAfterReturn.split(" ")[0].split(";")[0];
+        const strBeforeSemicon = strAfterReturn.split(" ")[0].split(";")[0];
         return this.getPropertiesByExpressionString(strBeforeSemicon);
     }
 
     private getPropertiesByExpressionString(expression: string): string[] {
-        let propertiesReferences = expression.split(".");
-        if (propertiesReferences.length)
-            propertiesReferences.shift(); // remove alias
+        const propertiesReferences = expression.split(".");
+        if (propertiesReferences.length) {
+            propertiesReferences.shift();
+        } // remove alias
         return propertiesReferences;
     }
 
     private getColumnByLambdaExpression<T>(expression: LambdaExpression<T>): LambdaColumnMetadata {
-        let propertiesMetadada = this.getPropertiesByLambdaExpression(expression);
+        const propertiesMetadada = this.getPropertiesByLambdaExpression(expression);
         return {
             columnLeft: this.getColumnByProperties(propertiesMetadada.propertiesLeft),
+            columnRight: this.getColumnByProperties(propertiesMetadada.propertiesRight),
             operator: propertiesMetadada.operator,
-            columnRight: this.getColumnByProperties(propertiesMetadada.propertiesRight)
         };
     }
 
     private getPropertiesByLambdaExpression<T>(expression: LambdaExpression<T>): LambdaPropertiesMetadata {
-        let expressionMetadada = this.getExpressionByLambdaExpression(expression);
+        const expressionMetadada = this.getExpressionByLambdaExpression(expression);
         return {
-            propertiesLeft: this.getPropertiesByExpressionString(expressionMetadada.expressionLeft),
             operator: expressionMetadada.operator,
-            propertiesRight: this.getPropertiesByExpressionString(expressionMetadada.expressionRight)
+            propertiesLeft: this.getPropertiesByExpressionString(expressionMetadada.expressionLeft),
+            propertiesRight: this.getPropertiesByExpressionString(expressionMetadada.expressionRight),
         };
     }
 
@@ -74,15 +75,16 @@ export class ExpressionUtils {
         if (!strAfterReturn) {
             strAfterReturn = expression.toString().split("{")[1].trim();
         }
-        let strExpression = strAfterReturn.split(";")[0].split(" ");
+        const strExpression = strAfterReturn.split(";")[0].split(" ");
 
-        if (strExpression.length != 3) {
-            throw `Lambda expression '${expression.toString()}' not supported! Use simple expression with '{expressionLeft} {operador} {expressionRight}'`;
+        if (strExpression.length !== 3) {
+            throw new Error(`Lambda expression '${expression.toString()}'
+            not supported! Use simple expression with '{expressionLeft} {operador} {expressionRight}'`);
         }
         return {
             expressionLeft: strExpression[0],
+            expressionRight: strExpression[2],
             operator: strExpression[1],
-            expressionRight: strExpression[2]
         };
     }
 }

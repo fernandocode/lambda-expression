@@ -1,11 +1,12 @@
 {
   "name": "lambda-expression",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Utility to analyze function (js) and arrow functions (ts), and create metadata of expressions, the initial scope is that it seeks to solve simple expressions. And later advance to encompass complex expressions.",
   "main": "./src/main.js",
   "types": "./src/main.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    "showcase": "cd .\\showcase\\ npm run start-showcase"
   },
   "keywords": [
     "linq",
@@ -26,5 +27,12 @@
     "url": "https://github.com/fernandocode/lambda-expression/issues"
   },
   "homepage": "https://github.com/fernandocode/lambda-expression#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/chai": "^4.1.1",
+    "@types/mocha": "^2.2.46",
+    "chai": "^4.1.2",
+    "mocha": "^5.0.0",
+    "ts-node": "^4.1.0",
+    "typescript": "2.6.2"
+  }
 }

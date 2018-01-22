@@ -40,24 +40,25 @@ var ExpressionUtils = (function () {
     };
     ExpressionUtils.prototype.getPropertiesByExpressionString = function (expression) {
         var propertiesReferences = expression.split(".");
-        if (propertiesReferences.length)
-            propertiesReferences.shift(); // remove alias
+        if (propertiesReferences.length) {
+            propertiesReferences.shift();
+        } // remove alias
         return propertiesReferences;
     };
     ExpressionUtils.prototype.getColumnByLambdaExpression = function (expression) {
         var propertiesMetadada = this.getPropertiesByLambdaExpression(expression);
         return {
             columnLeft: this.getColumnByProperties(propertiesMetadada.propertiesLeft),
+            columnRight: this.getColumnByProperties(propertiesMetadada.propertiesRight),
             operator: propertiesMetadada.operator,
-            columnRight: this.getColumnByProperties(propertiesMetadada.propertiesRight)
         };
     };
     ExpressionUtils.prototype.getPropertiesByLambdaExpression = function (expression) {
         var expressionMetadada = this.getExpressionByLambdaExpression(expression);
         return {
-            propertiesLeft: this.getPropertiesByExpressionString(expressionMetadada.expressionLeft),
             operator: expressionMetadada.operator,
-            propertiesRight: this.getPropertiesByExpressionString(expressionMetadada.expressionRight)
+            propertiesLeft: this.getPropertiesByExpressionString(expressionMetadada.expressionLeft),
+            propertiesRight: this.getPropertiesByExpressionString(expressionMetadada.expressionRight),
         };
     };
     ExpressionUtils.prototype.getExpressionByLambdaExpression = function (expression) {
@@ -66,13 +67,13 @@ var ExpressionUtils = (function () {
             strAfterReturn = expression.toString().split("{")[1].trim();
         }
         var strExpression = strAfterReturn.split(";")[0].split(" ");
-        if (strExpression.length != 3) {
-            throw "Lambda expression '" + expression.toString() + "' not supported! Use simple expression with '{expressionLeft} {operador} {expressionRight}'";
+        if (strExpression.length !== 3) {
+            throw new Error("Lambda expression '" + expression.toString() + "'\n            not supported! Use simple expression with '{expressionLeft} {operador} {expressionRight}'");
         }
         return {
             expressionLeft: strExpression[0],
+            expressionRight: strExpression[2],
             operator: strExpression[1],
-            expressionRight: strExpression[2]
         };
     };
     return ExpressionUtils;

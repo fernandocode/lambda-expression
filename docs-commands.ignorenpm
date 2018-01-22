@@ -1,0 +1,8 @@
+##Compile TS:
+> tsc
+
+##TSLint:
+# Run check:
+> tslint -c tslint.json 'src/**/*.ts'
+# Run check and fixed:
+> tslint -c tslint.json 'src/**/*.ts' --fix
