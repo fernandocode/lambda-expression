@@ -1,9 +1,9 @@
 import { ReferencesModelTest } from "./reference-model-test";
 export declare class ModelTest {
-    id: number;
-    name: string;
-    description: string;
-    date: Date;
-    isValid: boolean;
-    reference: ReferencesModelTest;
+    public id: number;
+    public name: string;
+    public description: string;
+    public date: Date;
+    public isValid: boolean;
+    public reference: ReferencesModelTest;
 }

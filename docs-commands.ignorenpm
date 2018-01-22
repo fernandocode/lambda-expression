@@ -6,3 +6,5 @@
 > tslint -c tslint.json 'src/**/*.ts'
 # Run check and fixed:
 > tslint -c tslint.json 'src/**/*.ts' --fix
+# Run check with exclude .d.ts:
+> tslint -c tslint.json 'src/**/*.ts' --fix --exclude "src/**/*.d.ts"
