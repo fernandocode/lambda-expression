@@ -5,7 +5,7 @@
   "main": "./src/main.js",
   "types": "./src/main.d.ts",
   "scripts": {
-    "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    "test": "tsc & mocha src/**/*.spec.js",
     "showcase": "cd .\\showcase\\ npm run start-showcase"
   },
   "keywords": [

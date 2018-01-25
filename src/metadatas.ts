@@ -1,17 +1,19 @@
-export interface LambdaExpressionMetadata {
+export interface LambdaExpressionMetadata extends LambdaExpressionMetadataBase {
     expressionLeft: string;
-    operator: string;
     expressionRight: string;
 }
 
-export interface LambdaPropertiesMetadata {
+export interface LambdaPropertiesMetadata extends LambdaExpressionMetadataBase {
     propertiesLeft: string[];
-    operator: string;
     propertiesRight: string[];
 }
 
-export interface LambdaColumnMetadata {
+export interface LambdaColumnMetadata extends LambdaExpressionMetadataBase {
     columnLeft: string;
-    operator: string;
     columnRight: string;
+}
+
+export interface LambdaExpressionMetadataBase{
+    operator: string;
+    alias: string;
 }
