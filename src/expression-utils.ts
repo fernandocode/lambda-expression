@@ -7,7 +7,7 @@ export class ExpressionUtils {
 
     }
 
-    public getValueByExpression<T>(instance: any, expression: Expression<T>) {
+    public getValueByExpression<T>(instance: T, expression: Expression<T>) {
         return expression(instance);
     }
 
@@ -20,6 +20,9 @@ export class ExpressionUtils {
     }
 
     public getValue(instance: any, property: string) {
+        if (property.indexOf(".") > -1) {
+            return this.getValueByProperties(instance, property.split("."));
+        }
         if (instance) {
             return instance[property];
         }

@@ -1,11 +1,13 @@
 {
   "name": "lambda-expression",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Utility to analyze function (js) and arrow functions (ts), and create metadata of expressions, the initial scope is that it seeks to solve simple expressions. And later advance to encompass complex expressions.",
   "main": "./src/main.js",
   "types": "./src/main.d.ts",
   "scripts": {
     "test": "tsc & mocha src/**/*.spec.js",
+    "test-grep": "tsc & mocha src/**/*.spec.js --grep",
+    "test-single": "tsc & mocha src/**/*.spec.js --grep Mapper --debug-brk",
     "showcase": "cd .\\showcase\\ npm run start-showcase"
   },
   "keywords": [

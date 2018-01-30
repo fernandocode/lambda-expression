@@ -1,3 +1,4 @@
+import { ReferencesModelTest } from './models/reference-model-test';
 import { LambdaExpressionMetadata } from './../metadatas';
 import { ModelTest } from "./models/model-test";
 import { expect } from "chai";
@@ -53,6 +54,47 @@ describe("Expression method", () => {
 
 });
 
+describe("Expression get value", () => {
+    let instance = <ModelTest>{
+        id: 1,
+        name: "Test",
+        description: "Descrição",
+        date: new Date(),
+        isValid: true,
+        reference: <ReferencesModelTest>{
+            id: 2,
+            name: "Reference"
+        }
+    };
+
+    it("get description", () => {
+        const result = _expressionUtils.getValue(instance, "description")
+        expect(result).to.equal("Descrição");
+    });
+
+    it("get reference.id", () => {
+        const result = _expressionUtils.getValue(instance, "reference.id")
+        expect(result).to.equal(2);
+    });
+
+    it("get reference.name", () => {
+        const result = _expressionUtils.getValue(instance, "reference.name")
+        expect(result).to.equal("Reference");
+    });
+
+    it("get by expression reference.name", () => {
+        const result = _expressionUtils.getValueByExpression(instance, x => x.reference.name)
+        expect(result).to.equal("Reference");
+    });
+
+    it("get reference.abc not exist", () => {
+        const result = _expressionUtils.getValue(instance, "reference.abc")
+        expect(result).to.equal(void 0);
+    });
+
+
+});
+
 describe("Lambda Expression method", () => {
 
     it("should return id == 0", () => {
@@ -80,20 +122,5 @@ describe("Lambda Expression method", () => {
         expect(result2.operator).to.equal("==");
         expect(result2.columnRight).to.equal(`'x.reference.id'`);
     });
-
-
-    // it("should test", () => {
-    //     const result = ExpressionUsage.lambda<ModelTest>((x) => x.id >= x.reference.id);
-    //     expect(result.columnLeft).to.equal("x.id");
-    //     expect(result.operator).to.equal(">=");
-    //     expect(result.columnRight).to.equal("x.reference.id");
-
-    //     console.log(_expressionUtils.getColumnByLambdaExpression<ModelTest>((x) => x.id >= x.reference.id));
-    //     console.log(_expressionUtils.getColumnByLambdaExpression<ModelTest>((x) => x.id >= 0));
-
-    //     const propertyRight = _expressionUtils.getPropertiesByExpressionString(result.expressionRight);
-    //     console.log(propertyRight);
-    //     console.log(_expressionUtils.getColumnByProperties(propertyRight));
-    // });
 
 });
