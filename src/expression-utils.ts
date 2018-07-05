@@ -46,22 +46,6 @@ export class ExpressionUtils {
         return this.getPropertiesByExpressionString(strBeforeSemicon);
     }
 
-    private hasAlias(value: string, alias: string | undefined): boolean {
-        if (!alias)
-            return true;
-        return value.indexOf(`${alias}.`) > -1;
-    }
-
-    private hasBetweenQuotes(value: string): boolean {
-        // let regexBetweenQuotes = /"[^"]*"/;
-        let regexBetweenQuotes = /^(["'])(.*)\1$/;
-        return regexBetweenQuotes.test(value);
-    }
-
-    private hasExpression(value: string, alias: string | undefined): boolean {
-        return !this.hasBetweenQuotes(value) && this.hasAlias(value, alias);
-    }
-
     public getPropertiesByExpressionString(expression: string, alias: string | undefined = void 0): string[] {
         if (this.hasExpression(expression, alias)) {
             const propertiesReferences = expression.split(".");
@@ -83,30 +67,14 @@ export class ExpressionUtils {
         };
     }
 
-    private getPropertiesByLambdaExpression<T>(expression: LambdaExpression<T>): LambdaPropertiesMetadata {
-        const expressionMetadada = this.getExpressionByLambdaExpression(expression);
-        return {
-            alias: expressionMetadada.alias,
-            operator: expressionMetadada.operator,
-            propertiesLeft: this.getPropertiesByExpressionString(expressionMetadada.expressionLeft, expressionMetadada.alias),
-            propertiesRight: this.getPropertiesByExpressionString(expressionMetadada.expressionRight, expressionMetadada.alias),
-        };
-    }
-
-    private getAlias(startExpression: string): string {
-        // https://stackoverflow.com/a/17779833/2290538
-        let regexBetweenParentheses = /\(([^)]+)\)/;
-        let resultRegex = regexBetweenParentheses.exec(startExpression);
-        return resultRegex && resultRegex.length > 1 ? resultRegex[1] : "";
-    }
-
-    public getExpressionByLambdaExpression<T>(expression: LambdaExpression<T>)
-        : LambdaExpressionMetadata {
+    public getExpressionByLambdaExpression<T>(
+        expression: LambdaExpression<T>
+    ): LambdaExpressionMetadata {
         let splitInitExpression = expression.toString().split("return");
         if (!splitInitExpression) {
             splitInitExpression = expression.toString().split("{");
         }
-        let strAfterReturn = splitInitExpression[1].trim();
+        const strAfterReturn = splitInitExpression[1].trim();
         const strExpression = strAfterReturn.split(";")[0].split(" ");
 
         if (strExpression.length !== 3) {
@@ -119,5 +87,39 @@ export class ExpressionUtils {
             expressionRight: strExpression[2],
             operator: strExpression[1],
         };
+    }
+
+    private getPropertiesByLambdaExpression<T>(expression: LambdaExpression<T>): LambdaPropertiesMetadata {
+        const expressionMetadada = this.getExpressionByLambdaExpression(expression);
+        return {
+            alias: expressionMetadada.alias,
+            operator: expressionMetadada.operator,
+            propertiesLeft: this.getPropertiesByExpressionString(expressionMetadada.expressionLeft, expressionMetadada.alias),
+            propertiesRight: this.getPropertiesByExpressionString(expressionMetadada.expressionRight, expressionMetadada.alias),
+        };
+    }
+
+    private getAlias(startExpression: string): string {
+        // https://stackoverflow.com/a/17779833/2290538
+        const regexBetweenParentheses = /\(([^)]+)\)/;
+        const resultRegex = regexBetweenParentheses.exec(startExpression);
+        return resultRegex && resultRegex.length > 1 ? resultRegex[1] : "";
+    }
+
+    private hasAlias(value: string, alias: string | undefined): boolean {
+        if (!alias) {
+            return true;
+        }
+        return value.indexOf(`${alias}.`) > -1;
+    }
+
+    private hasBetweenQuotes(value: string): boolean {
+        // let regexBetweenQuotes = /"[^"]*"/;
+        const regexBetweenQuotes = /^(["'])(.*)\1$/;
+        return regexBetweenQuotes.test(value);
+    }
+
+    private hasExpression(value: string, alias: string | undefined): boolean {
+        return !this.hasBetweenQuotes(value) && this.hasAlias(value, alias);
     }
 }

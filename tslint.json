@@ -16,14 +16,29 @@
             true,
             "ban-keywords",
             "check-format",
-            "allow-leading-underscore"
+            "allow-leading-underscore",
+            "allow-pascal-case"
         ],
+        "no-shadowed-variable": false,
         "interface-name": [
-            true, 
+            true,
             "never-prefix"
-        ]
+        ],
+        "no-empty": false,
+        "member-ordering": [
+            true,
+            "public-before-private",
+            "static-before-instance",
+            "variables-before-functions"
+        ],
+        "arrow-parens": false,
+        "trailing-comma": false,
+        "max-line-length": false,
+        "object-literal-sort-keys": false
     },
     "linterOptions": {
-        "exclude": ["src/**/*.d.ts"]
+        "exclude": [
+            "src/**/*.d.ts"
+        ]
     }
 }
