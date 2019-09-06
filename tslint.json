@@ -5,6 +5,7 @@
     ],
     "jsRules": {},
     "rules": {
+        "quotemark": false,
         "ordered-imports": [
             true,
             {
@@ -27,9 +28,13 @@
         "no-empty": false,
         "member-ordering": [
             true,
-            "public-before-private",
-            "static-before-instance",
-            "variables-before-functions"
+            {
+                "order": [
+                    "public-before-private",
+                    "static-before-instance",
+                    "variables-before-functions"
+                ]
+            }
         ],
         "arrow-parens": false,
         "trailing-comma": false,

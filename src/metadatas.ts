@@ -13,7 +13,12 @@ export interface LambdaColumnMetadata extends LambdaExpressionMetadataBase {
     columnRight: string;
 }
 
-export interface LambdaExpressionMetadataBase{
+export interface LambdaExpressionMetadataBase {
     operator: string;
     alias: string;
+}
+
+export interface ExpressionMetadata {
+    params: string;
+    body: string;
 }
