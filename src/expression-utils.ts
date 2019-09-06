@@ -164,27 +164,4 @@ export class ExpressionUtils {
 
     return lambdaExpressionMetadata;
   }
-
-  // public getExpressionByLambdaExpression<T>(expression: LambdaExpression<T>): LambdaExpressionMetadata {
-  //   let splitInitExpression = expression.toString().split('return');
-
-  //   if (!splitInitExpression) {
-  //     splitInitExpression = expression.toString().split('{');
-  //   }
-
-  //   const strAfterReturn = splitInitExpression[1].trim();
-  //   const strExpression = strAfterReturn.split(';')[0].split(' ');
-
-  //   if (strExpression.length !== 3) {
-  //     throw new Error(`Lambda expression '${expression.toString()}'
-  //           not supported! Use simple expression with '{expressionLeft} {operador} {expressionRight}'`);
-  //   }
-
-  //   return {
-  //     alias: this.getAlias(splitInitExpression[0]),
-  //     expressionLeft: strExpression[0],
-  //     expressionRight: strExpression[2],
-  //     operator: strExpression[1]
-  //   };
-  // }
 }
