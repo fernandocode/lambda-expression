@@ -5,7 +5,9 @@
   "main": "./src/main.js",
   "types": "./src/main.d.ts",
   "scripts": {
-    "test": "tsc & mocha src/**/*.spec.js",
+    "test": "npm run test-es5 & npm run test-es2015",
+    "test-es5": "tsc -p src/test/tsconfig-es5.json & mocha src/**/*.spec.js",
+    "test-es2015": "tsc -p src/test/tsconfig-es2015.json & mocha src/**/*.spec.js",
     "test-grep": "tsc & mocha src/**/*.spec.js --grep",
     "test-single": "tsc & mocha src/**/*.spec.js --grep Mapper --debug-brk",
     "showcase": "cd .\\showcase\\ npm run start-showcase",
@@ -36,6 +38,8 @@
     "chai": "^4.1.2",
     "mocha": "^5.0.0",
     "ts-node": "^4.1.0",
-    "typescript": "2.6.2"
-  }
+    "tslint": "^5.9.1",
+    "typescript": "3.0.3"
+  },
+  "dependencies": {}
 }
